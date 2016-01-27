@@ -4,9 +4,11 @@ public class Coin{
   float x,y;
   int type;
   float radius;
+  float diameter;
   //
   public Coin(float x,float y){
-    
+    radius = 5;
+    diameter = radius*2;
   }
   public void draw(){
     
@@ -19,6 +21,9 @@ public class Coin{
   }
   public float getY(){
     return y;
+  }
+  public float getRadius(){
+    return radius;
   }
   
   
