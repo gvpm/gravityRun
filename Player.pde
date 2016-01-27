@@ -8,21 +8,19 @@ public class Player{
   
   boolean alive;
   
-  
+  //constructor
+  //set inicial  parameters
   public Player(){
-    alive =true;
-    
+    alive =true;    
     diameter = 30;
     radius = diameter/2;
     speed = 3;
     x=0+radius;
-    y=height-radius;
-   
+    y=height-radius;  
     
     
-  }
-  
-  
+  }  
+    
    public void update(int g){
     move(g);
     
@@ -39,15 +37,18 @@ public class Player{
  
   //goind in front, if it hits the wall, goes back to begining
   public void move(int g){
+    //updates with the speed
     x = x+speed;
+    //updates with the speed times gravity that can be -1 or 1 (up or down)
     y=y+speed*g;
     //if it reaches the end, goes back to begining
     if(x>=width+radius){
       x=0+radius;
     }
+    //with that it wont go over the bottom of the level
     if(y>height-radius){
       setY(height-radius);
-    }
+    }//with that it wont go over the top of the page
     if(y<(0+radius)){
       setY(0+radius);
     }
@@ -88,6 +89,10 @@ public class Player{
   }
   public void setY(float y){
     this.y=y;
+  }
+  public int checkCoins(){
+    return nCoins;
+    
   }
   
  

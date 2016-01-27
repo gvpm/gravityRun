@@ -10,6 +10,7 @@ public class Coin{
     radius = 5;
     diameter = radius*2;
   }
+  //draws the coin
   public void draw(){
     
   }
