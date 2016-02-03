@@ -18,11 +18,11 @@ void draw() {
 }
 
   void keyPressed() {
-  if (keyCode == UP) {
+  if (keyCode == 'g' ||keyCode == 'G') {
     l.changeGravity();
   
   }
-  if (keyCode == DOWN) {
+  if (keyCode == 'r' ||keyCode == 'R'){
     l.randomise();
   
   }

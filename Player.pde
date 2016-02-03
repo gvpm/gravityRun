@@ -2,12 +2,13 @@ public class Player{
   
   PImage img;
   
-  float x,y,speed,diameter, radius;
+  float x,y,speed,diameter,radius;
   
   int nCoins;
   
   boolean alive;
   
+  boolean floor;
   //constructor
   //set inicial  parameters
   public Player(){
@@ -17,6 +18,7 @@ public class Player{
     speed = 3;
     x=0+radius;
     y=height-radius;  
+    floor = true;
     
     
   }  
@@ -48,9 +50,12 @@ public class Player{
     //with that it wont go over the bottom of the level
     if(y>height-radius){
       setY(height-radius);
-    }//with that it wont go over the top of the page
-    if(y<(0+radius)){
+      floor=true;
+    }else if(y<(0+radius)){
       setY(0+radius);
+      floor = true;
+    }else{
+      floor =false;
     }
     
     
@@ -59,8 +64,8 @@ public class Player{
   //check if collided with that coin
   //if it is a bad coin alive will be false;
   //if it is a good one ncoind++;
-  //
-  public boolean colision(Coin c){
+  //ee
+  public boolean collision(Coin c){
     
     float dist = dist(x,y,c.getX(),c.getY());
     if(dist<=this.radius+c.radius){
@@ -84,6 +89,9 @@ public class Player{
   public float getY(){
     return Y;
   }
+   public float getDiameter(){
+    return diameter;
+  }
   public void setX(float x){
     this.x=x;
   }
@@ -92,6 +100,15 @@ public class Player{
   }
   public int checkCoins(){
     return nCoins;
+    
+  }
+   public boolean isFloor(){
+    return floor;
+    
+  }
+  
+  public boolean isAlive(){
+    return alive;
     
   }
   

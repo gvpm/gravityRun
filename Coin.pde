@@ -6,12 +6,31 @@ public class Coin{
   float radius;
   float diameter;
   //
-  public Coin(float x,float y){
+  public Coin(float xOut,float yOut, int typeOut){
     radius = 5;
     diameter = radius*2;
+    x = xOut;
+    y = yOut;
+    type = typeOut;
+    
+    
+    
   }
   //draws the coin
   public void draw(){
+    
+    if(type==1){
+       stroke(150);          
+       fill(150);
+      
+    }else if(type==0){
+       stroke(0);          
+       fill(255,0,0);
+      
+    }
+   
+    
+    ellipse(x, y, diameter, diameter);
     
   }
   public int getType(){
@@ -25,6 +44,9 @@ public class Coin{
   }
   public float getRadius(){
     return radius;
+  }
+  public float getDiameter(){
+    return diameter;
   }
   
   
