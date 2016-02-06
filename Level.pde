@@ -6,6 +6,10 @@ public class Level{
   int maxScore;
   Player p;
   int gravity;
+  int nGoodCoins;
+  int nBadCoins;
+  int time;
+ 
   
  
   public Level(){
@@ -13,18 +17,23 @@ public class Level{
     gravity = 1;
     coins = new ArrayList<Coin>();
     
+    nGoodCoins = 20;
+    nBadCoins = 5;
+    maxScore =nGoodCoins;
+    time = 0;
+    
   }
   //creates all the good and bad coins and stores in the arrrays
   //gives a random position to each one.
   public void generate(){
     //good coin
-      for(int i = 0; i < 30; i++){
+      for(int i = 0; i < nGoodCoins; i++){
         Coin c = new Coin(random(width),random(height),1);
         coins.add(c);     
       }
       
       //bad coin
-       for(int i = 0; i < 5; i++){
+       for(int i = 0; i < nBadCoins; i++){
         Coin c = new Coin(random(width),random(0+p.getDiameter()+5,height-p.getDiameter()-5),0);
         coins.add(c);     
       }
@@ -32,17 +41,24 @@ public class Level{
     
   }
   //sending the gravity to the player
-  public void  update(){
+  public void update(){
     //if player is alive, player continues to move
-    if(p.isAlive()){
+    if(p.isAlive()&&!checkScore()){
       p.update(gravity);
+      if(((float)frameCount%60==0))
+      //time = (int)frameCount/60;//assuming 60fps
+      time++;
     }
+    
+      
       
       
     //constantly checks whether player has collided with a coin
     checkCollision();
     //score update
     checkScore();
+    
+   
     
     
   }
@@ -69,12 +85,29 @@ public class Level{
   
   public void randomise(){
     coins.clear();
+    time = 0;
+    p.resetCoins();
+    p.resurrect();
     generate();
     
   }
   
   //checks if max score is
-  public void checkScore(){
+  public boolean checkScore(){
+    if(p.checkCoins() == getMaxScore())
+    return true;
+    
+    return false;
+    
+    
+  }
+  
+  public Player getPlayer(){
+    return p;
+    
+  }
+  public int getMaxScore(){
+    return maxScore;
     
   }
   
@@ -87,6 +120,10 @@ public class Level{
       }
       
     }
+    
+  }
+  public int getTime(){
+    return time;
     
   }
   

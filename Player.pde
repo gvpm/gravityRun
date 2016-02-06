@@ -9,6 +9,10 @@ public class Player{
   boolean alive;
   
   boolean floor;
+  
+  int verticalSpeed;
+  
+  int baseSpeed;
   //constructor
   //set inicial  parameters
   public Player(){
@@ -19,6 +23,8 @@ public class Player{
     x=0+radius;
     y=height-radius;  
     floor = true;
+    verticalSpeed = 6;
+    baseSpeed = 3;
     
     
   }  
@@ -42,10 +48,11 @@ public class Player{
     //updates with the speed
     x = x+speed;
     //updates with the speed times gravity that can be -1 or 1 (up or down)
-    y=y+speed*g;
+    y=y+(6)*g;
     //if it reaches the end, goes back to begining
     if(x>=width+radius){
       x=0+radius;
+      speed +=0.1;
     }
     //with that it wont go over the bottom of the level
     if(y>height-radius){
@@ -109,6 +116,15 @@ public class Player{
   
   public boolean isAlive(){
     return alive;
+    
+  }
+  public void resetCoins(){
+    nCoins = 0;
+    
+  }
+  public void resurrect(){
+    alive = true;
+    speed =baseSpeed;
     
   }
   

@@ -1,5 +1,6 @@
 
 Level l;
+UI ui;
 
 
 void setup() {
@@ -7,12 +8,15 @@ void setup() {
   l = new Level();
  
   l.generate();
- 
+  ui = new UI(l);
 }
 
 void draw() {
   l.update();
+  ui.update();
   l.draw();
+  ui.draw();
+  
   
   
 }
