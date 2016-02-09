@@ -1,3 +1,13 @@
+//GRAVITY RUN - Player Class by Guilherme Magalhaes
+//Write a mini introduction here about your class and any inspiration
+//Anything like how you felt about making the class (nervous?)
+
+//A brief description of what your class does
+//And then fill in evaluation at end of code
+
+//See also: Evaluation and References (end of code)
+
+
 public class Player{
   
   PImage img;
@@ -14,7 +24,7 @@ public class Player{
   
   int baseSpeed;
   //constructor
-  //set inicial  parameters
+  //set initial  parameters
   public Player(){
     alive =true;    
     diameter = 30;
@@ -33,7 +43,7 @@ public class Player{
     move(g);
     
   }
-  //draw a ball in that posiition with the size
+  //draw a ball in that position with the size
   public void draw(){
     stroke(0);          // Setting the outline (stroke) to black
     fill(0);
@@ -43,13 +53,13 @@ public class Player{
     
   }
  
-  //goind in front, if it hits the wall, goes back to begining
+  //going in front, if it hits the wall, goes back to beginning
   public void move(int g){
     //updates with the speed
     x = x+speed;
     //updates with the speed times gravity that can be -1 or 1 (up or down)
     y=y+(6)*g;
-    //if it reaches the end, goes back to begining
+    //if it reaches the end, goes back to beginning
     if(x>=width+radius){
       x=0+radius;
       speed +=0.1;
@@ -71,7 +81,6 @@ public class Player{
   //check if collided with that coin
   //if it is a bad coin alive will be false;
   //if it is a good one ncoind++;
-  //ee
   public boolean collision(Coin c){
     
     float dist = dist(x,y,c.getX(),c.getY());
@@ -81,11 +90,11 @@ public class Player{
       }else if(c.getType()==1){
         nCoins++;
       }
-      //case where is coolided
+      //case where is collided
       return true;
     }  
     
-    //case where it didnt colide
+    //case where it didnt collide
     return false;
     
   }
@@ -132,3 +141,16 @@ public class Player{
   
   
 }
+
+//EVALUATION
+//How you felt about your class - liked/disliked it?
+//If you were to do this project again, what would you do differently? 
+//(e.g. stuff like learning more code to use, don't need to be fancy) 
+
+//REFERENCES in Harvard Referencing Style
+//Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html
+//Processing, Processing Foundation. 2016. if. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/if.html
+//Processing, Processing Foundation. 2016. Boolean. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/boolean.html
+//Processing, Processing Foundation. 2016. Array. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/Array.html
+//Processing, Processing Foundation. 2016. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/ArrayList.html
+//Oracle, Java Platform. 1993. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html 
