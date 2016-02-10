@@ -1,11 +1,6 @@
 //GRAVITY RUN - Main Class by Anthony Cordova
-//Write a mini introduction here about your class and any inspiration
-//Anything like how you felt about making the class (nervous?)
 
-//A brief description of what your class does
-//And then fill in evaluation at end of code
-
-//See also: Evaluation and References (end of code)
+//See also: References (end of code)
 
 Level l;
 UI ui;
@@ -39,11 +34,6 @@ void draw() {
   
   }
 }
-
-//EVALUATION
-//How you felt about your class - liked/disliked it?
-//If you were to do this project again, what would you do differently? 
-//(e.g. stuff like learning more code to use, don't need to be fancy) 
 
 //REFERENCES in Harvard Referencing Style
 //Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html

@@ -37,7 +37,7 @@ public class Level{
     coins = new ArrayList<Coin>();
     
     //we will have 20 good coins and 5 bad coins
-    nGoodCoins = 20;
+    nGoodCoins = 2;
     nBadCoins = 5;
     maxScore =nGoodCoins;
     time = 0;

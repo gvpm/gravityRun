@@ -1,11 +1,8 @@
 //GRAVITY RUN - Coin Class by Cem Kose
-//Write a mini introduction here about your class and any inspiration
-//Anything like how you felt about making the class (nervous?)
+//The Coin Class draws the coin (although it does not place them onto the  map, the Level Class does), 
+//and changes its colour properties (stroke and fill colour) to establish its coin type (good or bad).
 
-//A brief description of what your class does
-//And then fill in evaluation at end of code
-
-//See also: Evaluation and References (end of code)
+//See also: References (end of code)
 
 
 public class Coin{
@@ -15,7 +12,8 @@ public class Coin{
   int type;
   float radius;
   float diameter;
-  //
+  
+  //coins - x,y,type is random and is drawn in the Level Class
   public Coin(float xOut,float yOut, int typeOut){
     radius = 5;
     diameter = radius*2;
@@ -28,11 +26,11 @@ public class Coin{
   }
   //draws the coin
   public void draw(){
-    
+    //two types of coin, good and bad, draws the good one
     if(type==1){
        stroke(150);          
        fill(150);
-      
+    //draws the bad coin  
     }else if(type==0){
        stroke(0);          
        fill(255,0,0);
@@ -43,6 +41,7 @@ public class Coin{
     ellipse(x, y, diameter, diameter);
     
   }
+  //coin type and position is gotten at random from the Level Class when it is drawn onto the map over there
   public int getType(){
     return type;
   }
@@ -63,10 +62,6 @@ public class Coin{
   
 }
 
-//EVALUATION
-//How you felt about your class - liked/disliked it?
-//If you were to do this project again, what would you do differently? 
-//(e.g. stuff like learning more code to use, don't need to be fancy) 
 
 //REFERENCES in Harvard Referencing Style
 //Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html
