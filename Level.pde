@@ -107,6 +107,10 @@ public class Level{
   
   //resetting the level
   public void randomise(){
+   
+    gravity=1; 
+    p.setX(0+p.getDiameter()/2);
+    p.setY(height-p.getDiameter()/2);
     coins.clear();
     time = 0;
     p.resetCoins();
