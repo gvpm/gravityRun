@@ -1,23 +1,15 @@
-//GRAVITY RUN - Level Class by Lien Ngo
-//Brainstorming through a series of ideas of what type of program we could make,
-//we decided to go with a simplistic game that - while simple, can still be coded
-//to remain "beautiful" (as described by Guilhe!).
-//Having discussed roles most suitable to ourselves, I decided to take on the
-//responsibilities of the Level Class as having no prior experience to programming,
-//it seemed like a good challenge!
 
 //The Level class is in charge of refreshing the Level, as its name suggests,
 //by loading the coins from a stored array list and checking on the player's
 //status (e.g. score, dead or alive), proceeding to ending or refreshing the map, 
 //dependent on the player's perfomance. 
 
-//See also: Evaluation and References (end of code)
 
 public class Level{
 
   //Setting the variables and array list to store coins in
 
-  //Coin[] Coins;
+  //Stores all the coins
   ArrayList<Coin> coins; //Array list to store the coins
   boolean gameOn;
   int maxScore; //Score
@@ -26,6 +18,7 @@ public class Level{
   int nGoodCoins; //Good coins
   int nBadCoins; //Bad Coins
   int time;
+  
  
   
  
@@ -37,10 +30,12 @@ public class Level{
     coins = new ArrayList<Coin>();
     
     //we will have 20 good coins and 5 bad coins
-    nGoodCoins = 2;
-    nBadCoins = 5;
+    nGoodCoins = 5;
+    nBadCoins = 0;
     maxScore =nGoodCoins;
     time = 0;
+    
+    
     
   }
   //creates all the good and bad coins and stores it in the arrray
@@ -62,7 +57,15 @@ public class Level{
   }
   //sending the gravity to the player
   public void update(){
+      //case when player is dead
+      //it will only reset game if R was pressed after player died
+     if(p.getDeadMessage()==1){
+       p.setDeadMessage(-1);
+       resetGame();
+     }
     //if player is alive, player continues to move
+    
+    if(p.getDeadMessage() == -1){
     if(p.isAlive()&&!checkScore()){
       p.update(gravity);
       if(((float)frameCount%60==0))
@@ -70,14 +73,16 @@ public class Level{
       //assuming 60fps
       time++;
     }
-    
-      
-      
-      
+
     //constantly checks whether player has collided with a coin
     checkCollision();
-    //score update
-    checkScore();
+    //score update case when lvl is done
+    if(checkScore()){
+      nextLvl();
+    }
+    }
+   
+    
     
    
     
@@ -112,9 +117,39 @@ public class Level{
     p.setX(0+p.getDiameter()/2);
     p.setY(height-p.getDiameter()/2);
     coins.clear();
-    time = 0;
+    //time = 0;
+    //nBadCoins ++;
     p.resetCoins();
-    p.resurrect();
+    p.restartSpeed();
+    //p.resurrect();
+    generate();
+    
+  }
+  //jumping to next lvl when score is reached
+   public void nextLvl(){
+   
+    gravity=1; 
+    p.setX(0+p.getDiameter()/2);
+    p.setY(height-p.getDiameter()/2);
+    coins.clear();
+    //time = 0;
+    nBadCoins ++;
+    p.resetCoins();
+    p.restartSpeed();
+    generate();
+    
+  }
+  
+   public void resetGame(){
+   
+    gravity=1; 
+    p.setX(0+p.getDiameter()/2);
+    p.setY(height-p.getDiameter()/2);
+    coins.clear();
+    time = 0;
+    nBadCoins =0;
+    p.resetCoins();
+    //p.resurrect();
     generate();
     
   }
@@ -157,20 +192,16 @@ public class Level{
     
   }
   
+  public int getNBadCoins(){
+    return nBadCoins;
+  }
+  
+  public int coinsToGoal(){
+    
+    return getMaxScore() - p.checkCoins();
+  }
+    
+    
+  
  
 }
-
-//EVALUATION
-//I felt that the Level Class was a good challenge because my group mates helped me to learn a lot,
-//the difficulty motivated me to experiment with different types of codes to achieve the 
-//best results in the most efficient method.
-//If I were to do this project again, I will learn to work with a wider range of types of code,
-//in order to achieve a game that will also be as visually sophisticated as this experience was!
-
-//REFERENCES in Harvard Referencing Style
-//Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html
-//Processing, Processing Foundation. 2016. if. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/if.html
-//Processing, Processing Foundation. 2016. Boolean. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/boolean.html
-//Processing, Processing Foundation. 2016. Array. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/Array.html
-//Processing, Processing Foundation. 2016. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/ArrayList.html
-//Oracle, Java Platform. 1993. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html 

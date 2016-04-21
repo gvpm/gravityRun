@@ -1,8 +1,6 @@
-//GRAVITY RUN - Coin Class by Cem Kose
+
 //The Coin Class draws the coin (although it does not place them onto the  map, the Level Class does), 
 //and changes its colour properties (stroke and fill colour) to establish its coin type (good or bad).
-
-//See also: References (end of code)
 
 
 public class Coin{
@@ -61,12 +59,3 @@ public class Coin{
   
   
 }
-
-
-//REFERENCES in Harvard Referencing Style
-//Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html
-//Processing, Processing Foundation. 2016. if. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/if.html
-//Processing, Processing Foundation. 2016. Boolean. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/boolean.html
-//Processing, Processing Foundation. 2016. Array. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/Array.html
-//Processing, Processing Foundation. 2016. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/ArrayList.html
-//Oracle, Java Platform. 1993. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html 

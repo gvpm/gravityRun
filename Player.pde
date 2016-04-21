@@ -1,7 +1,3 @@
-//GRAVITY RUN - Player Class by Guilherme Magalhaes
-
-
-//See also: References (end of code)
 
 
 public class Player{
@@ -19,6 +15,9 @@ public class Player{
   int verticalSpeed;
   
   int baseSpeed;
+  
+  int deadMessage;
+  
   //constructor
   //set initial  parameters
   public Player(){
@@ -31,6 +30,8 @@ public class Player{
     floor = true;
     verticalSpeed = 6;
     baseSpeed = 3;
+    
+    deadMessage = -1;
     
     
   }  
@@ -82,6 +83,8 @@ public class Player{
     float dist = dist(x,y,c.getX(),c.getY());
     if(dist<=this.radius+c.radius){
       if(c.getType()==0){
+        //deadStatus(player dead and message to be shown)
+        deadMessage = 0;
         alive=false;
       }else if(c.getType()==1){
         nCoins++;
@@ -127,9 +130,28 @@ public class Player{
     nCoins = 0;
     
   }
+  
+  //Case when player was resurected after R was pressed looking at the message
   public void resurrect(){
     alive = true;
     speed =baseSpeed;
+    deadMessage=1;
+    
+  }
+   
+  public void restartSpeed(){
+  
+    speed =baseSpeed;
+    
+  }
+  public int getDeadMessage(){
+  
+    return deadMessage;
+    
+  }
+  public void setDeadMessage(int i){
+  
+    deadMessage = i;
     
   }
   
@@ -137,12 +159,3 @@ public class Player{
   
   
 }
-
-
-//REFERENCES in Harvard Referencing Style
-//Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html
-//Processing, Processing Foundation. 2016. if. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/if.html
-//Processing, Processing Foundation. 2016. Boolean. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/boolean.html
-//Processing, Processing Foundation. 2016. Array. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/Array.html
-//Processing, Processing Foundation. 2016. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/ArrayList.html
-//Oracle, Java Platform. 1993. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html 

@@ -1,10 +1,9 @@
-//GRAVITY RUN - UI Class by Brian
 
-//See also: References (end of code)
 
 public class UI{
  int score;//stores how many coins player got
  int time;//stores the time elapsed since the beginning of the game
+ int currentLvL;
  Level l;
   
   public UI(Level l)
@@ -19,20 +18,23 @@ public class UI{
   {
     score = l.getPlayer().checkCoins();
     time = l.getTime();
+    currentLvL =l.getNBadCoins(); 
   }
   
   public void draw()
   {
-    text("Score: "+score, 20,20);
+    text("Good Coins left: "+l.coinsToGoal(), 20,20);
     text("Time: "+time,20,35);
+    text("Current LvL: "+currentLvL,20,50);
     
     text("G to change Gravity",width-130,20);
     text("R to reset LvL",width-130,35);
     
     
     if(!l.getPlayer().isAlive()&&!l.checkScore()){
-      text("DEAD",(width/2)-30,height/2);
-      
+      text("You Reached LvL: "+currentLvL+" in "+time+" s",(width/2)-115,height/3);
+      text("DEAD, Press R to Reset the Game",(width/2)-130,height/2);
+      //not used anymore
     }else if(l.checkScore()){
       text("YOU WON IN "+time+" s",(width/2)-60,height/2);
       
@@ -40,11 +42,3 @@ public class UI{
   }
   
 }
-
-//REFERENCES in Harvard Referencing Style
-//Processing, Processing Foundation. 2016. Draw. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/draw_.html
-//Processing, Processing Foundation. 2016. if. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/if.html
-//Processing, Processing Foundation. 2016. Boolean. [Online]. [Accessed 27 January 2016]. Available from: https://processing.org/reference/boolean.html
-//Processing, Processing Foundation. 2016. Array. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/Array.html
-//Processing, Processing Foundation. 2016. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://processing.org/reference/ArrayList.html
-//Oracle, Java Platform. 1993. ArrayList. [Online]. [Accessed 3 February 2016]. Available from: https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html 
